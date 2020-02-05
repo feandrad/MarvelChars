@@ -5,7 +5,7 @@ import io.felipeandrade.marvelchars.data.characters.CharacterApi
 import io.felipeandrade.marvelchars.ui.characters.CharSelectionAdapter
 import io.felipeandrade.marvelchars.ui.characters.CharSelectionViewModel
 import io.felipeandrade.marvelchars.usecases.LoadCharacterById
-import io.felipeandrade.marvelchars.usecases.LoadCharacters
+import io.felipeandrade.marvelchars.usecases.LoadCharactersUseCase
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -16,20 +16,21 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 val coreModule = module(override = true) {
-    factory { LoadCharacters(get()) }
-    factory { LoadCharacterById(get()) }
-    factory { CharacterRepository(get()) }
 
-    factory { AuthInterceptor() }
-    factory { provideOkHttpClient(get()) }
-    factory { provideCharacterApi(get()) }
+    single { AuthInterceptor() }
+    single { provideOkHttpClient(get()) }
+    single { provideCharacterApi(get()) }
     single { provideRetrofit(get()) }
 
 }
 
 val characterModule = module(override = true) {
     factory { CharSelectionAdapter() }
-    viewModel { CharSelectionViewModel() }
+    viewModel { CharSelectionViewModel(get()) }
+
+    single { LoadCharactersUseCase(get()) }
+    single { LoadCharacterById(get()) }
+    single { CharacterRepository(get()) }
 }
 
 

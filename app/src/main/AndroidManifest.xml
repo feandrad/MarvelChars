@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="io.felipeandrade.marvelchars">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".MarvelCharsApp"
@@ -21,4 +22,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>
