@@ -12,6 +12,9 @@ android {
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
         testInstrumentationRunner rootProject.ext.testInstrumentationRunner
+
+        buildConfigField 'String', 'BASE_URL', '"https://gateway.marvel.com"'
+        buildConfigField 'String', 'API_KEY', marvel_api_url
     }
 
     compileOptions {
