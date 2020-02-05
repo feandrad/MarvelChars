@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.char_list_item.view.*
 
 class CharSelectionAdapter : RecyclerView.Adapter<CharSelectionAdapter.ViewHolder>() {
 
-    private val elements: List<MarvelCharacter> = listOf()
+    private var elements: List<MarvelCharacter> = listOf()
 
     var onCharacterClicked: (MarvelCharacter) -> Unit = {}
 
@@ -24,6 +24,11 @@ class CharSelectionAdapter : RecyclerView.Adapter<CharSelectionAdapter.ViewHolde
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =
         holder.bind(elements[position], onCharacterClicked)
+
+    fun setData(newElements: List<MarvelCharacter>?) {
+        elements = newElements?: listOf()
+        notifyDataSetChanged()
+    }
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
