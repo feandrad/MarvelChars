@@ -1,18 +1,25 @@
 package io.felipeandrade.marvelchars.data
 
 import io.felipeandrade.marvelchars.data.characters.CharacterApi
+import io.felipeandrade.marvelchars.data.characters.CharacterMapper
 import io.felipeandrade.marvelchars.domain.MarvelCharacter
 import java.math.BigInteger
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
-class CharacterRepository(private val characterApi: CharacterApi) {
+class CharacterRepository(
+    private val characterApi: CharacterApi,
+    private val characterMapper: CharacterMapper
+) {
 
     suspend fun loadAll(): List<MarvelCharacter> {
         val ts = System.currentTimeMillis().toString()
-        return characterApi.loadAllCharacters(
+
+        val allCharactersResponse = characterApi.loadAllCharacters(
             ts, BuildConfig.PUBLIC_API_KEY, getMd5(ts)
         )
+
+        return characterMapper.mapAllCharacters(allCharactersResponse)
     }
 
     suspend fun loadCharacter(charId: Int): MarvelCharacter {

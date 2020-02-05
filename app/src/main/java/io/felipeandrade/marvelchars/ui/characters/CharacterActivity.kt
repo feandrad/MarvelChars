@@ -27,7 +27,7 @@ class CharacterActivity : AppCompatActivity() {
     }
 
     private fun initRecyclerView() {
-        list_character_selection.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        list_character_selection.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         charSelectionAdapter.onCharacterClicked = { charSelectionViewModel.characterClicked(it) }
         list_character_selection.adapter = charSelectionAdapter
     }

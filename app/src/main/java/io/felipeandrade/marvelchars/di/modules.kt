@@ -3,6 +3,7 @@ package io.felipeandrade.marvelchars.di
 import io.felipeandrade.marvelchars.data.BuildConfig
 import io.felipeandrade.marvelchars.data.CharacterRepository
 import io.felipeandrade.marvelchars.data.characters.CharacterApi
+import io.felipeandrade.marvelchars.data.characters.CharacterMapper
 import io.felipeandrade.marvelchars.ui.characters.CharSelectionAdapter
 import io.felipeandrade.marvelchars.ui.characters.CharSelectionViewModel
 import io.felipeandrade.marvelchars.usecases.LoadCharacterById
@@ -30,7 +31,8 @@ val characterModule = module(override = true) {
 
     single { LoadCharactersUseCase(get()) }
     single { LoadCharacterById(get()) }
-    single { CharacterRepository(get()) }
+    single { CharacterRepository(get(), get()) }
+    single { CharacterMapper() }
 }
 
 fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
