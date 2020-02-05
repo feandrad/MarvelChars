@@ -14,7 +14,8 @@ android {
         testInstrumentationRunner rootProject.ext.testInstrumentationRunner
 
         buildConfigField 'String', 'BASE_URL', '"https://gateway.marvel.com"'
-        buildConfigField 'String', 'API_KEY', marvel_api_url
+        buildConfigField 'String', 'PUBLIC_API_KEY', marvel_public_api
+        buildConfigField 'String', 'PRIVATE_API_KEY', marvel_private_api
     }
 
     compileOptions {
