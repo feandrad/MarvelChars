@@ -6,6 +6,6 @@
 
     <activity
         android:id="@+id/charSelectionActivity"
-        android:name="io.felipeandrade.marvelchars.ui.characters.CharSelectionActivity"
+        android:name="io.felipeandrade.marvelchars.ui.characters.CharacterActivity"
         android:label="CharSelectionActivity" />
 </navigation>
