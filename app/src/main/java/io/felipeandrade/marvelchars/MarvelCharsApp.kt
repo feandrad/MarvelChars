@@ -16,14 +16,8 @@ class MarvelCharsApp : Application() {
 
     private fun initDependencyInjection() {
         startKoin {
-            androidLogger()
             androidContext(this@MarvelCharsApp)
-            modules(
-                listOf(
-                    coreModule,
-                    characterModule
-                )
-            )
+            modules(listOf(coreModule, characterModule))
         }
     }
 }
