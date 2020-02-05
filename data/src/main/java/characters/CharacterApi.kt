@@ -1,7 +1,7 @@
 package io.felipeandrade.marvelchars.data.characters
 
 import characters.responses.ListAllCharactersResponse
-import io.felipeandrade.marvelchars.domain.MarvelCharacter
+import characters.responses.loadbyid.CharacterByIdResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -14,12 +14,12 @@ interface CharacterApi {
         @Query("hash") hash: String
     ): ListAllCharactersResponse
 
-    @GET("/v1/public/characters/")
+    @GET("/v1/public/characters")
     suspend fun loadCharacterById(
         @Query("ts") ts: String,
         @Query("apikey") apiKey: String,
         @Query("hash") hash: String,
         @Query("id") charId: Int
-    ): MarvelCharacter
+    ): CharacterByIdResponse
 
 }

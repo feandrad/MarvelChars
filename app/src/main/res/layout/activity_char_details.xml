@@ -7,7 +7,7 @@
 
 
     <TextView
-        android:id="@+id/character_name"
+        android:id="@+id/tv_character_name"
         android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/character_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_character_name"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -43,7 +43,7 @@
         android:layout_marginRight="24dp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/character_name"
+        app:layout_constraintTop_toTopOf="@+id/tv_character_name"
         tools:text="01020405" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

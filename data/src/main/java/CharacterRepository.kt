@@ -22,11 +22,14 @@ class CharacterRepository(
         return characterMapper.mapAllCharacters(allCharactersResponse)
     }
 
-    suspend fun loadCharacter(charId: Int): MarvelCharacter {
+    suspend fun loadCharacter(charId: Int): MarvelCharacter? {
         val ts = System.currentTimeMillis().toString()
-        return characterApi.loadCharacterById(
+
+        val response = characterApi.loadCharacterById(
             ts, BuildConfig.PUBLIC_API_KEY, getMd5(ts), charId
         )
+
+        return characterMapper.mapCharacterById(response)
     }
 
     private fun getMd5(ts: String): String {

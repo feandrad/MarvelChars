@@ -1,6 +1,7 @@
 package io.felipeandrade.marvelchars.data.characters
 
 import characters.responses.ListAllCharactersResponse
+import characters.responses.loadbyid.CharacterByIdResponse
 import io.felipeandrade.marvelchars.domain.MarvelCharacter
 
 class CharacterMapper {
@@ -20,5 +21,16 @@ class CharacterMapper {
         }
 
         return result
+    }
+
+    fun mapCharacterById(response: CharacterByIdResponse): MarvelCharacter? {
+        response.data.results?.get(0)?.let {
+            return MarvelCharacter(
+                id = it.id,
+                name = it.name,
+                portraitUrl = "${it.thumbnail.path}.${it.thumbnail.extension}"
+            )
+        } ?: return null
+
     }
 }

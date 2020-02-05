@@ -11,9 +11,11 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class CharacterActivity : AppCompatActivity() {
+class CharacterSelectionActivity : AppCompatActivity() {
 
-    val SELECTED_CHAR_ID = "SELECTED_CHAR_ID"
+    companion object{
+        const val SELECTED_CHAR_ID = "SELECTED_CHAR_ID"
+    }
 
 
     private val charSelectionAdapter: CharSelectionAdapter by inject()

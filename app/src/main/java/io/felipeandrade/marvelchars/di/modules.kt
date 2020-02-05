@@ -4,13 +4,12 @@ import io.felipeandrade.marvelchars.data.BuildConfig
 import io.felipeandrade.marvelchars.data.CharacterRepository
 import io.felipeandrade.marvelchars.data.characters.CharacterApi
 import io.felipeandrade.marvelchars.data.characters.CharacterMapper
+import io.felipeandrade.marvelchars.ui.characters.CharDetailsViewModel
 import io.felipeandrade.marvelchars.ui.characters.CharSelectionAdapter
 import io.felipeandrade.marvelchars.ui.characters.CharSelectionViewModel
-import io.felipeandrade.marvelchars.usecases.LoadCharacterById
+import io.felipeandrade.marvelchars.usecases.LoadCharacterByIdUseCase
 import io.felipeandrade.marvelchars.usecases.LoadCharactersUseCase
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -28,9 +27,10 @@ val coreModule = module(override = true) {
 val characterModule = module(override = true) {
     factory { CharSelectionAdapter() }
     viewModel { CharSelectionViewModel(get()) }
+    viewModel { CharDetailsViewModel(get()) }
 
     single { LoadCharactersUseCase(get()) }
-    single { LoadCharacterById(get()) }
+    single { LoadCharacterByIdUseCase(get()) }
     single { CharacterRepository(get(), get()) }
     single { CharacterMapper() }
 }

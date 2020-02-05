@@ -16,13 +16,16 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity
-            android:name=".ui.characters.CharacterActivity"
+            android:name=".ui.characters.CharacterSelectionActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.characters.CharacterDetailsActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

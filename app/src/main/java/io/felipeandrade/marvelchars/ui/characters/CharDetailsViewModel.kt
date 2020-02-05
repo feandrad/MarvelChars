@@ -1,10 +1,21 @@
 package io.felipeandrade.marvelchars.ui.characters
 
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
 import io.felipeandrade.marvelchars.domain.MarvelCharacter
+import io.felipeandrade.marvelchars.usecases.LoadCharacterByIdUseCase
+import kotlinx.coroutines.Dispatchers
 
-class CharDetailsViewModel : ViewModel() {
+class CharDetailsViewModel(
+    private val loadCharacterById: LoadCharacterByIdUseCase
+) : ViewModel() {
 
-    val characterData= MutableLiveData<MarvelCharacter>()
+    var charId: Int = 0
+
+    val characterData: LiveData<MarvelCharacter?> = liveData(Dispatchers.IO) {
+        val retrievedData = loadCharacterById(charId)
+        emit(retrievedData)
+    }
+
 }
